@@ -31,6 +31,7 @@ describe('Login Tests', () => {
   //     .assertVisited();
       
   // })
+  // command to login with credentials
 
-
+  
 })
