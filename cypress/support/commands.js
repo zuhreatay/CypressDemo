@@ -24,14 +24,14 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import LoginPage  from '../pages/LoginPage';
+import LoginPage  from '../pages/loginPage';
 
 
 
 import 'cypress-xpath';
 
 Cypress.Commands.add('loginWithCredentials', (role) => {
-    const LoginPage = new LoginPage();
+    const loginpage = new LoginPage();
     cy.fixture("credentials").then((credentials) => {
 
         const baseUrl = 'https://www.saucedemo.com/';
@@ -41,11 +41,11 @@ Cypress.Commands.add('loginWithCredentials', (role) => {
         const roleCredentials = credentials[role];
 
         if (roleCredentials) {
-            const LoginPage = new LoginPage();
+            const loginPage = new LoginPage();
             cy.visit(baseUrl);
-            cy.get(LoginPage.usernameInput).type(username);
-            cy.get(LoginPage.passwordInput).type(password);
-            cy.get(LoginPage.loginButton).click();
+            cy.get(loginPage.usernameInput).type(username);
+            cy.get(loginPage.passwordInput).type(password);
+            cy.get(loginPage.loginButton).click();
         } else {
             throw new Error(`Role ${role} not found in credentials`);
         }
