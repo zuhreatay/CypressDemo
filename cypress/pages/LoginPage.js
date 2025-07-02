@@ -4,27 +4,22 @@ class LoginPage {
     passwordInput = '#password';
     loginButton = '#login-button';
 
-    visit() {
+    visit(){
         cy.visit('https://www.saucedemo.com/');
-        return this;
     }
+
     fillUsername(username) {
-        cy.get(this.usernameInput).type(username);
-        return this;
-    }
-    assertVisited() {
-        cy.url().should('include', 'saucedemo');
-        return this;
-    }
-    fillPassword(password) {
-        cy.get(this.passwordInput).type(password);
-        return this;
+       return cy.get(this.usernameInput, {timout: 1000}).should('be.visible').type(username);
+    }   
+
+    fillPassword(password ){
+      return  cy.get(this.passwordInput).should('be.visible').type(password);
     }
     clickLoginButton() {
-        cy.get(this.loginButton).click();
-        return this;
+       return cy.get(this.loginButton).click();
     }
-}
 
+
+}
 
 export default LoginPage;
