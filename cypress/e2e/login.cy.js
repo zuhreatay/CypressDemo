@@ -83,7 +83,6 @@ describe('Login Tests', () => {
     // 5.Url kontrolu
     // 6.Hata mesajini kontrol et
 
-    //cy.loginWithCredentials("standard_user");
     const loginPage = new LoginPage();
     const fakeUsername = faker.internet.userName();
     const fakePassword = faker.internet.password();
