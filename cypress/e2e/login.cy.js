@@ -1,5 +1,5 @@
 import "../support/commands";
-import LoginPage from '../pages/loginPage';
+import LoginPage from '../pages/LoginPage';
 import { faker } from '@faker-js/faker';
 
 
@@ -117,5 +117,7 @@ describe('Login Tests', () => {
     cy.get('.error-message-container').should('be.visible');
 
   })
+
+
 
 })
