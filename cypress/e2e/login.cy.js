@@ -52,7 +52,7 @@ describe('Login Tests', () => {
     cy.get('.error-message-container').should('be.visible');
   })
 
-  it('user should nott be able to login with wrong credentials', () => {
+  it('user should not be able to login with wrong credentials', () => {
     //US-002: Kullanici yanlis bilgilerle login olmamali
     // Test Senaryosu: TC_02
     // 1.kullanici web sitesine gider
@@ -99,24 +99,7 @@ describe('Login Tests', () => {
     cy.get('.error-message-container').should('contain', 'Username and password do not match');
   });
 
-  it('user should nott be able to login with wrong credentials', () => {
-    //US-002: Kullanici yanlis bilgilerle login olmamali
-    // Test Senaryosu: TC_04
-    // 1.kullanici web sitesine gider
-    // 2.bos username i gir
-    // 3.bos password gir
-    // 4. Login butonuna tıkla
-    // 5. URL kontrolü
-    // 6. Hata mesajı kontrolü
-    const loginPage = new LoginPage();
-    loginPage.visit();
-    loginPage.fillUsername();
-    loginPage.fillPassword();
-    loginPage.clickLoginButton();
-    cy.url().should('include', 'https://www.saucedemo.com/');
-    cy.get('.error-message-container').should('be.visible');
-
-  })
+ 
 
 
 

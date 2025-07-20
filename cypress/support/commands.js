@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import cypress from 'cypress';
 import LoginPage  from '../pages/LoginPage';
 
 
@@ -49,7 +50,18 @@ Cypress.Commands.add('loginWithCredentials', (role) => {
         } else {
             throw new Error(`Role ${role} not found in credentials`);
         }
+        });
     });
-})
+    
+    Cypress.Commands.add('Login', (username, password) => {
+        const loginPage = new LoginPage();
+        const baseUrl = 'https://www.saucedemo.com/';
+        cy.visit(baseUrl);
+        cy.get(loginPage.usernameInput).type(username);
+        cy.get(loginPage.passwordInput).type(password);
+        cy.get(loginPage.loginButton).click();
+    });
+    
+
 
 

@@ -1,36 +1,37 @@
-import LoginPage from '../support/pages/LoginPage';
-import InventoryPage from '../support/pages/InventoryPage';
-import CartPage from '../support/pages/CartPage';
-import CheckoutPage from '../support/pages/CheckoutPage';
-import CheckoutOverviewPage from '../support/pages/CheckoutOverviewPage';
+import LoginPage from '../pages/LoginPage';
+import ProductsPage from '../pages/ProductsPage';
+
 
 describe('E-ticaret kullanici akisi- SauceDemo', () => {
   const loginPage = new LoginPage();
-  const inventoryPage = new InventoryPage();
-  const cartPage = new CartPage();
-  const checkoutPage = new CheckoutPage();
-  const checkoutOverviewPage = new CheckoutOverviewPage();
+  const productsPage = new ProductsPage();
+
+
 
   it('Kullanici alisveris akisini tamamlar', () => {
     // Ana sayfa / login
     loginPage.visit();
-    loginPage.login('standard_user', 'secret_sauce');
+    loginPage.fillUsername('standard_user');
+    loginPage.fillPassword('secret_sauce');
+    loginPage.clickLoginButton();
+
 
     // Ürün seçimi ve sepete ekleme
-    inventoryPage.addToCart('Sauce Labs Backpack');
-    inventoryPage.goToCart();
+    productsPage.addToCart('Sauce Labs Backpack');
+    productsPage.goToCart();
 
     // Sepet -> Ödeme
-    cartPage.clickCheckout();
+    productsPage.clickCheckout();
 
     // Kullanıcı bilgileri girilir
-    checkoutPage.fillInformation('Ali', 'Veli', '12345');
-    checkoutPage.clickContinue();
+    productsPage.fillInformation('Ali', 'Veli', '12345');
+    productsPage.clickContinue();
 
     // Sipariş onayı ve tamamlanması
-    checkoutOverviewPage.clickFinish();
+    productsPage.clickFinish();
 
     // Başarı sayfası doğrulaması
-    checkoutOverviewPage.verifySuccess();
+    productsPage.verifySuccess();
   });
+
 });
